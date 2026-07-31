@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 640px;
+  --breakpoint-lg: 864px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1280px;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b1020;
+  /* Brand */
+  --brand-50: #f3f0ff;
+  --brand-100: #e9e2ff;
+  --brand-200: #d3c5ff;
+  --brand-300: #b39aff;
+  --brand-400: #9070ff;
+  --brand-500: #6b3cff;
+  --brand-600: #5a2ee6;
+  --brand-700: #4a25bf;
+  --brand-800: #3a1c95;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero radial glow */
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 70% 30%, rgba(124, 58, 237, 0.35) 0%, rgba(124, 58, 237, 0) 60%),
+    radial-gradient(40% 30% at 80% 70%, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0) 60%);
+  pointer-events: none;
+}
+
+/* Subtle starfield in the hero */
+.hero-stars {
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 64%, rgba(255, 255, 255, 0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 14%, rgba(255, 255, 255, 0.3) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 62% 78%, rgba(255, 255, 255, 0.35) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 38%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 86% 64%, rgba(255, 255, 255, 0.3) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 8% 88%, rgba(255, 255, 255, 0.3) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 14%, rgba(255, 255, 255, 0.4) 50%, transparent 51%);
+}
+
+/* Wave decoration for the bottom CTA band */
+.cta-waves {
+  background-image:
+    radial-gradient(40% 60% at 0% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(35% 50% at 100% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
 }
